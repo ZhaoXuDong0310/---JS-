@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+    var test = 'hello word'
+    console.log(this.test)// hello word => 直接调用，
+                            // this指向全局变量test，值为 hello word
+    var test1 = {
+      test: 'hello chain',
+      func:function(){
+        return this.test
+      }
+    }
+    var func = test1.func
+    console.log(func());//hello word => 将对象test1中的方法func赋值给了变量func
+                        //调用func等同于调用对象test1中的方法func，
+                        // 这个方法中的this直接调用指向全局变量test
+</script>
+</body>
+</html>
