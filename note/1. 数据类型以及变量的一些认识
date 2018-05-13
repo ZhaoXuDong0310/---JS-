@@ -1,0 +1,75 @@
+数据类型分为两大类型：
+    1.基本数据类型
+    2.引用数据类型
+其中基本数据类型分为两类
+    1.生活中常见的
+        Number、String、Boolean
+    2.生活中不常见的
+        undefined、null
+引用类型分为三种
+    Object、Array、Function
+数据类型的判断：
+    为什么要对数据类型进行判断，因为数据类型的特性不一样，举个例子，如果说你手中
+    有一条基本类型的数据，那么它是number类型还是string类型，我能不能对这条数据进行
+    算数运算，如果你手上有一条引用类型的数据，那么你是Object类型还是Array类型，我
+    能不能通过数组的方式从里面获取数据
+数据类型判断的方式：
+    1.typeof
+        可以对常用的基本类型string、number、Boolean进行判断,也可以判断function类型
+        例如：
+            var a = 2;
+            console.log(typeof a) // 'number'
+            var b = 'Like';
+            console.log(typeof b) // 'string'
+        注意：！！！返回的都是字符串类型，为什么返回的是字符串类型，因为使用typeof
+                    进行判断返回的是一个数据类型的字符串表达
+    2.=== 全等运算符
+        可以判断基本类型不常用的undefined与null
+        示例：
+            var a
+            console.log(a === undefined)
+            var b = null
+            console.log(b === null)
+    3.instanceof
+        可以判断引用类型
+        示例：
+            var a = {}
+            console.log(a instanceof Object)
+            var b = []
+            console.log(b instanceof Array)
+内存与变量的认识：
+    全局变量在创建时会自动分配一个内存
+    局部变量在函数执行时才被创建
+    变量保存在栈空间中
+    对象被保存在堆空间中
+    我们说的判断一个变量是什么类型实际上说的是这个变量的值是什么类型，因为变量本身是没有类型的
+    1.多个引用变量指向同一个对象，当其中一个引用变量修改对象内部的数据时，其它引用变量也看得见
+        示例：
+            var a = {n:3}
+            var b = a
+            b.n = 4
+            console.log(a.n,b.n) // 44
+            因为它们指向的是同一个对象{n:3}，其中b修改了这个对象中的数据，所有a也看得见
+            var a1 = 5
+            var b1 = a1
+            function fn(a){ // 参数传递，将实参a1传递给形参a，等于做了一件事 a = a1
+                a.n = 6
+            }
+            fn(a1)
+            console.log(a1.n,a.n) // 6
+            将变量a1作为实参传递给函数fn的形参a，使用变量进行传递传递的不是这个变量本身，
+            而是这个变量的值，所以 a = a1，它两指向同一个对象
+    2.多个引用变量指向同一个对象，其中一个引用变量指向了另外一个对象，此时，其它引用变量还是指向原来的对象
+        示例：
+            var obj3 = {name: 'Tom'}
+            var obj4 = obj3
+            obj3 = {name: 'JACK'}
+            console.log(obj4.name) // JACK
+            function f2(obj) { // obj = obj4
+                obj = {name: 'Bob'}
+            }
+            f2(obj4)
+            console.log(obj4.name) JACK
+            因为指向的不是同一个对象
+
+
